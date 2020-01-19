@@ -14,5 +14,19 @@ app.get('/user/:name/',function(req,res){
             + '筆的資料</p></body></html>');
 })
 
+app.use(function(req,res,next){
+    console.log('進入!');
+    // aa();
+    next();
+})
+
+app.use(function(req,res,next){
+    res.status(404).send('您的頁面找不到');
+})
+
+app.use(function(err,req,res,next){
+    res.status(500).send('程式有些問題,請稍後嘗試');
+})
+
 var port = process.env.PORT || 3000;
 app.listen(port);
