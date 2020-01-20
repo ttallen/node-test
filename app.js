@@ -1,6 +1,8 @@
 var express = require('express');
 var app = express();
 
+app.use(express.static('public'));
+
 app.get('/user/:name/',function(req,res){
     var myName = req.params.name;
     var limit = req.query.limit;
@@ -11,7 +13,7 @@ app.get('/user/:name/',function(req,res){
             + q 
             + '且是找前' 
             + limit 
-            + '筆的資料</p></body></html>');
+            + '筆的資料</p><img src="/image/1.png"></body></html>');
 })
 
 app.use(function(req,res,next){
