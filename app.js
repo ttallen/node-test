@@ -1,19 +1,19 @@
 var express = require('express');
 var app = express();
 
+//靜態檔案的路徑
 app.use(express.static('public'));
 
-app.get('/user/:name/',function(req,res){
-    var myName = req.params.name;
-    var limit = req.query.limit;
-    var q = req.query.q;
-    res.send('<html><head></head><body><p>' 
-            + myName 
-            + '要搜尋關鍵字' 
-            + q 
-            + '且是找前' 
-            + limit 
-            + '筆的資料</p><img src="/image/1.png"></body></html>');
+var engine = require('ejs-locals');
+app.engine('ejs',engine);
+app.set('views','./views');
+app.set('view engine','ejs');
+
+app.get('/',function(req,res){
+    res.render('index');
+})
+app.get('/user',function(req,res){
+    res.render('user');
 })
 
 app.use(function(req,res,next){
