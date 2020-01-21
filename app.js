@@ -10,7 +10,8 @@ app.get('/',function(req,res){
     res.render('index',{
         'show': true,
         'title': '<h1>首頁</h1>',
-        'name': 'allen'
+        'name': 'allen',
+        'type': ['php','js','java']
     });
 })
 app.get('/user',function(req,res){
