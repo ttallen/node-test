@@ -7,6 +7,10 @@
     <title>Document</title>
 </head>
 <body>
-    Hello
+    <% if(show){ %>
+        <p>資料有呈現</p>
+    <% } %>
+    <%- title %>
+    <h2><%= name %></h2>
 </body>
 </html>

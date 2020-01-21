@@ -1,16 +1,17 @@
 var express = require('express');
 var app = express();
 
-//靜態檔案的路徑
-app.use(express.static('public'));
-
 var engine = require('ejs-locals');
 app.engine('ejs',engine);
 app.set('views','./views');
 app.set('view engine','ejs');
 
 app.get('/',function(req,res){
-    res.render('index');
+    res.render('index',{
+        'show': true,
+        'title': '<h1>首頁</h1>',
+        'name': 'allen'
+    });
 })
 app.get('/user',function(req,res){
     res.render('user');
