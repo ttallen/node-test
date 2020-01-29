@@ -8,9 +8,14 @@ send.addEventListener('click',function(e){
     console.log(str);
     var xhr = new XMLHttpRequest();
     xhr.open('post','/searchAJAX');
-    xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+
+    // xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    xhr.setRequestHeader("Content-type","application/json");
+
     //  content=1234&title=hello
-    var data = 'content='+str;
+    // var data = 'content='+str;
+    var data = JSON.stringify({"content":str,"list":[1,3,5]});
+
     xhr.send(data);
     xhr.onload = function(){
         console.log(xhr.responseText);

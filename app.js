@@ -30,8 +30,8 @@ app.post('/searchList',function(req,res){
 
 app.post('/searchAJAX',function(req,res){
     console.log(req.body);
+    console.log(req.body.list[1]);
     res.send('hello!!')
-    // console.log(req.body);
     // //轉址
     // res.redirect('search');
     // res.render('search');
