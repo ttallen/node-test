@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var engine = require('ejs-locals');
 var bodyParser = require('body-parser');
+var user = require('./router/user');
 app.engine('ejs',engine);
 app.set('views','./views');
 app.set('view engine','ejs');
@@ -17,6 +18,8 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.get('/',function(req,res){
        res.send('進入首頁!');
    })
+
+app.use('/user',user);
 
 app.get('/search',function(req,res){
     res.render('search');
