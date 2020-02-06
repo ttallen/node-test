@@ -2,7 +2,10 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/photo',function(req,res){
-    console.log(req.cookies);
+    // console.log(req.cookies);
+    console.log(req.session);
+    req.session.username = 'bob';
+    req.session.email = 'email';
     res.cookie('name','allen',{
         maxAge: 10000,
         httpOnly: true

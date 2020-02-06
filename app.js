@@ -3,6 +3,7 @@ var app = express();
 var engine = require('ejs-locals');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
 var user = require('./router/user');
 app.engine('ejs',engine);
 app.set('views','./views');
@@ -15,7 +16,11 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false})); 
 app.use(cookieParser());
-
+app.use(session({
+    secret: 'keyboard cat',
+    resave: true,
+    saveUninitialized: true
+  }));
 // 路由
 app.get('/',function(req,res){
        res.send('進入首頁!');
