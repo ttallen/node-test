@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var user = require('./router/user');
+var index = require('./router/index');
 app.engine('ejs',engine);
 app.set('views','./views');
 app.set('view engine','ejs');
@@ -19,12 +20,13 @@ app.use(cookieParser());
 app.use(session({
     secret: 'keyboard cat',
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
+    cookie:{
+        maxAge: 10000
+    }
   }));
 // 路由
-app.get('/',function(req,res){
-       res.send('進入首頁!');
-   })
+app.use('/',index);
 
 app.use('/user',user);
 
